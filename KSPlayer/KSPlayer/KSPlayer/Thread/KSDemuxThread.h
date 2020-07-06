@@ -29,6 +29,8 @@ public:
     long long total_ms = 0;
     void SetPause(bool isPause);
     bool isPause = false;
+    
+    
 protected:
     std::mutex mux;
     KSDemux *demux = 0;

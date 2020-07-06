@@ -19,7 +19,7 @@ void KSThread::wait1() {
 }
 
 KSThread::KSThread() {
-    
+    decode = new KSDecode();
 }
 
 KSThread::~KSThread() {

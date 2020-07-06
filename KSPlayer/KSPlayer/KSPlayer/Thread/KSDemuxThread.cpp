@@ -1,5 +1,6 @@
 #include "KSDemuxThread.h"
 #include <iostream>
+#include <thread>
 #include "KSDemux.h"
 #include "KSVideoThread.h"
 #include "KSAudioThread.h"
@@ -74,8 +75,7 @@ void KSDemuxThread::SetPause(bool isPause)
     mux.unlock();
 }
 
-void KSDemuxThread::Runloop()
-{
+void KSDemuxThread::Runloop(){
     while (!isExit)
     {
         mux.lock();
@@ -130,9 +130,7 @@ void KSDemuxThread::Runloop()
     }
 }
 
-
-bool KSDemuxThread::Open(const char *url, KSProtocol *call)
-{
+bool KSDemuxThread::Open(const char *url, KSProtocol *call) {
     if (url == 0 || url[0] == '\0')
         return false;
     
@@ -169,8 +167,7 @@ bool KSDemuxThread::Open(const char *url, KSProtocol *call)
 }
 
 //关闭线程清理资源
-void KSDemuxThread::Close()
-{
+void KSDemuxThread::Close() {
     isExit = true;
     wait1();
     if (video_thread) video_thread->Close();
@@ -182,6 +179,11 @@ void KSDemuxThread::Close()
     audio_thread = NULL;
     mux.unlock();
 }
+
+void StartDemuxThread(KSDemuxThread *demux_thread) {
+    demux_thread->Runloop();
+}
+
 //启动所有线程
 void KSDemuxThread::Start()
 {
@@ -189,6 +191,13 @@ void KSDemuxThread::Start()
     if (!demux) demux = new KSDemux();
     if (!video_thread) video_thread = new KSVideoThread();
     if (!audio_thread) audio_thread = new KSAudioThread();
+    
+    std::thread thread(StartDemuxThread,this);
+    if (video_thread) {
+        video_thread->Start();
+        //std::thread thread(StartVideoThread,video_thread);
+    }
+    
     //启动当前线程
     //QThread::start();
     //if (video_thread)video_thread->start();

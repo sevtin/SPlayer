@@ -17,6 +17,7 @@ public:
     //打开，不管成功与否都清理
     virtual bool Open(AVCodecParameters *para,KSProtocol *call,int width,int height);
     void Runloop();
+    void Start();
     KSVideoThread();
     virtual ~KSVideoThread();
     //同步时间，由外部传入

@@ -1,6 +1,8 @@
 #include "KSVideoThread.h"
-#include "KSDecode.h"
 #include <iostream>
+#include <thread>
+#include "KSDecode.h"
+
 using namespace std;
 //打开，不管成功与否都清理
 bool KSVideoThread::Open(AVCodecParameters *para, KSProtocol *call,int width,int height)
@@ -103,6 +105,17 @@ bool KSVideoThread::RepaintPts(AVPacket *pkt, long long seekpts)
     vmux.unlock();
     return false;
 }
+
+void StartVideoThread(KSVideoThread *video_thread) {
+    video_thread->Runloop();
+}
+
+//启动所有线程
+void KSVideoThread::Start() {
+    Runloop();
+    //std::thread thread(StartVideoThread,this);
+}
+
 KSVideoThread::KSVideoThread()
 {
 }

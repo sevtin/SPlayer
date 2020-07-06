@@ -29,6 +29,8 @@
 		E6BCFBA624B30FB500AF8982 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBA524B30FB500AF8982 /* libz.tbd */; };
 		E6BCFBA824B30FBC00AF8982 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBA724B30FBC00AF8982 /* libiconv.tbd */; };
 		E6BCFBAA24B30FC400AF8982 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBA924B30FC400AF8982 /* libbz2.tbd */; };
+		E6BCFBAC24B3166600AF8982 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBAB24B3166600AF8982 /* libSDL2.a */; };
+		E6BCFBAF24B31A7E00AF8982 /* KSVideoPlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFBAD24B31A7E00AF8982 /* KSVideoPlay.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,9 @@
 		E6BCFBA524B30FB500AF8982 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E6BCFBA724B30FBC00AF8982 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		E6BCFBA924B30FC400AF8982 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		E6BCFBAB24B3166600AF8982 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../Users/saeipi/Documents/Library/SDL2/lib/libSDL2.a; sourceTree = "<group>"; };
+		E6BCFBAD24B31A7E00AF8982 /* KSVideoPlay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KSVideoPlay.cpp; sourceTree = "<group>"; };
+		E6BCFBAE24B31A7E00AF8982 /* KSVideoPlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSVideoPlay.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6BCFBAC24B3166600AF8982 /* libSDL2.a in Frameworks */,
 				E6BCFBAA24B30FC400AF8982 /* libbz2.tbd in Frameworks */,
 				E6BCFBA824B30FBC00AF8982 /* libiconv.tbd in Frameworks */,
 				E6BCFBA624B30FB500AF8982 /* libz.tbd in Frameworks */,
@@ -127,6 +133,7 @@
 		E6BCFB7024B2FE9B00AF8982 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6BCFBAB24B3166600AF8982 /* libSDL2.a */,
 				E6BCFBA924B30FC400AF8982 /* libbz2.tbd */,
 				E6BCFBA724B30FBC00AF8982 /* libiconv.tbd */,
 				E6BCFBA524B30FB500AF8982 /* libz.tbd */,
@@ -142,11 +149,10 @@
 		E6BCFB7B24B2FFA100AF8982 /* KSPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				E6BCFBB024B31A8600AF8982 /* Play */,
 				E6BCFBA424B306E100AF8982 /* Decode */,
 				E6BCFBA324B306C300AF8982 /* Thread */,
 				E6BCFB7D24B2FFA100AF8982 /* KSProtocol.h */,
-				E6BCFB7F24B2FFA100AF8982 /* KSAudioPlay.h */,
-				E6BCFB7E24B2FFA100AF8982 /* KSAudioPlay.cpp */,
 			);
 			path = KSPlayer;
 			sourceTree = "<group>";
@@ -179,6 +185,17 @@
 				E6BCFB8C24B2FFA100AF8982 /* KSResample.cpp */,
 			);
 			path = Decode;
+			sourceTree = "<group>";
+		};
+		E6BCFBB024B31A8600AF8982 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				E6BCFB7F24B2FFA100AF8982 /* KSAudioPlay.h */,
+				E6BCFB7E24B2FFA100AF8982 /* KSAudioPlay.cpp */,
+				E6BCFBAE24B31A7E00AF8982 /* KSVideoPlay.h */,
+				E6BCFBAD24B31A7E00AF8982 /* KSVideoPlay.cpp */,
+			);
+			path = Play;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +277,7 @@
 				E6BCFB9924B2FFA100AF8982 /* KSDemux.cpp in Sources */,
 				E6BCFB9824B2FFA100AF8982 /* XDecodeThread.cpp in Sources */,
 				E6BCFB9724B2FFA100AF8982 /* KSDecode.cpp in Sources */,
+				E6BCFBAF24B31A7E00AF8982 /* KSVideoPlay.cpp in Sources */,
 				E6BCFB9C24B2FFA100AF8982 /* KSResample.cpp in Sources */,
 				E6BCFBA224B3006C00AF8982 /* KSThread.cpp in Sources */,
 			);
@@ -400,11 +418,17 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = /Users/saeipi/Documents/Library/FFmpeg/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/saeipi/Documents/Library/FFmpeg/lib,
+					/Users/saeipi/Documents/Library/SDL2/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeipi.KSPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = /Users/saeipi/Documents/Library/FFmpeg/include;
+				USER_HEADER_SEARCH_PATHS = (
+					/Users/saeipi/Documents/Library/FFmpeg/include,
+					/Users/saeipi/Documents/Library/SDL2/include,
+				);
 			};
 			name = Debug;
 		};
@@ -420,11 +444,17 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = /Users/saeipi/Documents/Library/FFmpeg/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/saeipi/Documents/Library/FFmpeg/lib,
+					/Users/saeipi/Documents/Library/SDL2/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeipi.KSPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = /Users/saeipi/Documents/Library/FFmpeg/include;
+				USER_HEADER_SEARCH_PATHS = (
+					/Users/saeipi/Documents/Library/FFmpeg/include,
+					/Users/saeipi/Documents/Library/SDL2/include,
+				);
 			};
 			name = Release;
 		};
