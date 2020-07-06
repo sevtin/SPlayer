@@ -17,18 +17,15 @@
 		E6BCFB7624B2FEA400AF8982 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFB7524B2FEA400AF8982 /* libavutil.a */; };
 		E6BCFB7824B2FEB600AF8982 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFB7724B2FEB600AF8982 /* libswresample.a */; };
 		E6BCFB7A24B2FEBC00AF8982 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFB7924B2FEBC00AF8982 /* libswscale.a */; };
-		E6BCFB9424B2FFA100AF8982 /* cmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB7C24B2FFA100AF8982 /* cmain.cpp */; };
 		E6BCFB9524B2FFA100AF8982 /* XAudioPlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB7E24B2FFA100AF8982 /* XAudioPlay.cpp */; };
 		E6BCFB9624B2FFA100AF8982 /* XAudioThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8024B2FFA100AF8982 /* XAudioThread.cpp */; };
 		E6BCFB9724B2FFA100AF8982 /* XDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8224B2FFA100AF8982 /* XDecode.cpp */; };
 		E6BCFB9824B2FFA100AF8982 /* XDecodeThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8424B2FFA100AF8982 /* XDecodeThread.cpp */; };
 		E6BCFB9924B2FFA100AF8982 /* XDemux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8624B2FFA100AF8982 /* XDemux.cpp */; };
 		E6BCFB9A24B2FFA100AF8982 /* XDemuxThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8824B2FFA100AF8982 /* XDemuxThread.cpp */; };
-		E6BCFB9B24B2FFA100AF8982 /* XPlay2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8A24B2FFA100AF8982 /* XPlay2.cpp */; };
 		E6BCFB9C24B2FFA100AF8982 /* XResample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8C24B2FFA100AF8982 /* XResample.cpp */; };
-		E6BCFB9D24B2FFA100AF8982 /* XSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8E24B2FFA100AF8982 /* XSlider.cpp */; };
 		E6BCFB9E24B2FFA100AF8982 /* XVideoThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB9024B2FFA100AF8982 /* XVideoThread.cpp */; };
-		E6BCFB9F24B2FFA100AF8982 /* XVideoWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB9224B2FFA100AF8982 /* XVideoWidget.cpp */; };
+		E6BCFBA224B3006C00AF8982 /* KSThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFBA024B3006C00AF8982 /* KSThread.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +44,6 @@
 		E6BCFB7524B2FEA400AF8982 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../../../Users/saeipi/Documents/Library/FFmpeg/lib/libavutil.a; sourceTree = "<group>"; };
 		E6BCFB7724B2FEB600AF8982 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../../../../../Users/saeipi/Documents/Library/FFmpeg/lib/libswresample.a; sourceTree = "<group>"; };
 		E6BCFB7924B2FEBC00AF8982 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../../../../../Users/saeipi/Documents/Library/FFmpeg/lib/libswscale.a; sourceTree = "<group>"; };
-		E6BCFB7C24B2FFA100AF8982 /* cmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cmain.cpp; sourceTree = "<group>"; };
 		E6BCFB7D24B2FFA100AF8982 /* IVideoCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVideoCall.h; sourceTree = "<group>"; };
 		E6BCFB7E24B2FFA100AF8982 /* XAudioPlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XAudioPlay.cpp; sourceTree = "<group>"; };
 		E6BCFB7F24B2FFA100AF8982 /* XAudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAudioPlay.h; sourceTree = "<group>"; };
@@ -61,16 +57,12 @@
 		E6BCFB8724B2FFA100AF8982 /* XDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDemux.h; sourceTree = "<group>"; };
 		E6BCFB8824B2FFA100AF8982 /* XDemuxThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XDemuxThread.cpp; sourceTree = "<group>"; };
 		E6BCFB8924B2FFA100AF8982 /* XDemuxThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDemuxThread.h; sourceTree = "<group>"; };
-		E6BCFB8A24B2FFA100AF8982 /* XPlay2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XPlay2.cpp; sourceTree = "<group>"; };
-		E6BCFB8B24B2FFA100AF8982 /* XPlay2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPlay2.h; sourceTree = "<group>"; };
 		E6BCFB8C24B2FFA100AF8982 /* XResample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XResample.cpp; sourceTree = "<group>"; };
 		E6BCFB8D24B2FFA100AF8982 /* XResample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XResample.h; sourceTree = "<group>"; };
-		E6BCFB8E24B2FFA100AF8982 /* XSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XSlider.cpp; sourceTree = "<group>"; };
-		E6BCFB8F24B2FFA100AF8982 /* XSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSlider.h; sourceTree = "<group>"; };
 		E6BCFB9024B2FFA100AF8982 /* XVideoThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XVideoThread.cpp; sourceTree = "<group>"; };
 		E6BCFB9124B2FFA100AF8982 /* XVideoThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XVideoThread.h; sourceTree = "<group>"; };
-		E6BCFB9224B2FFA100AF8982 /* XVideoWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XVideoWidget.cpp; sourceTree = "<group>"; };
-		E6BCFB9324B2FFA100AF8982 /* XVideoWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XVideoWidget.h; sourceTree = "<group>"; };
+		E6BCFBA024B3006C00AF8982 /* KSThread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KSThread.cpp; sourceTree = "<group>"; };
+		E6BCFBA124B3006C00AF8982 /* KSThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSThread.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +130,6 @@
 		E6BCFB7B24B2FFA100AF8982 /* KSPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				E6BCFB7C24B2FFA100AF8982 /* cmain.cpp */,
 				E6BCFB7D24B2FFA100AF8982 /* IVideoCall.h */,
 				E6BCFB7E24B2FFA100AF8982 /* XAudioPlay.cpp */,
 				E6BCFB7F24B2FFA100AF8982 /* XAudioPlay.h */,
@@ -152,16 +143,12 @@
 				E6BCFB8724B2FFA100AF8982 /* XDemux.h */,
 				E6BCFB8824B2FFA100AF8982 /* XDemuxThread.cpp */,
 				E6BCFB8924B2FFA100AF8982 /* XDemuxThread.h */,
-				E6BCFB8A24B2FFA100AF8982 /* XPlay2.cpp */,
-				E6BCFB8B24B2FFA100AF8982 /* XPlay2.h */,
 				E6BCFB8C24B2FFA100AF8982 /* XResample.cpp */,
 				E6BCFB8D24B2FFA100AF8982 /* XResample.h */,
-				E6BCFB8E24B2FFA100AF8982 /* XSlider.cpp */,
-				E6BCFB8F24B2FFA100AF8982 /* XSlider.h */,
 				E6BCFB9024B2FFA100AF8982 /* XVideoThread.cpp */,
 				E6BCFB9124B2FFA100AF8982 /* XVideoThread.h */,
-				E6BCFB9224B2FFA100AF8982 /* XVideoWidget.cpp */,
-				E6BCFB9324B2FFA100AF8982 /* XVideoWidget.h */,
+				E6BCFBA024B3006C00AF8982 /* KSThread.cpp */,
+				E6BCFBA124B3006C00AF8982 /* KSThread.h */,
 			);
 			path = KSPlayer;
 			sourceTree = "<group>";
@@ -238,18 +225,15 @@
 				E6BCFB9E24B2FFA100AF8982 /* XVideoThread.cpp in Sources */,
 				E6BCFB6124B2FE1F00AF8982 /* ViewController.m in Sources */,
 				E6BCFB6924B2FE2000AF8982 /* main.m in Sources */,
-				E6BCFB9B24B2FFA100AF8982 /* XPlay2.cpp in Sources */,
-				E6BCFB9F24B2FFA100AF8982 /* XVideoWidget.cpp in Sources */,
 				E6BCFB9524B2FFA100AF8982 /* XAudioPlay.cpp in Sources */,
 				E6BCFB9624B2FFA100AF8982 /* XAudioThread.cpp in Sources */,
-				E6BCFB9424B2FFA100AF8982 /* cmain.cpp in Sources */,
-				E6BCFB9D24B2FFA100AF8982 /* XSlider.cpp in Sources */,
 				E6BCFB5E24B2FE1F00AF8982 /* AppDelegate.m in Sources */,
 				E6BCFB9A24B2FFA100AF8982 /* XDemuxThread.cpp in Sources */,
 				E6BCFB9924B2FFA100AF8982 /* XDemux.cpp in Sources */,
 				E6BCFB9824B2FFA100AF8982 /* XDecodeThread.cpp in Sources */,
 				E6BCFB9724B2FFA100AF8982 /* XDecode.cpp in Sources */,
 				E6BCFB9C24B2FFA100AF8982 /* XResample.cpp in Sources */,
+				E6BCFBA224B3006C00AF8982 /* KSThread.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

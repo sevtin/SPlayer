@@ -5,7 +5,7 @@
 #include <iostream>
 extern "C"
 {
-#include <libavformat/avformat.h>
+#include "libavformat/avformat.h"
 }
 #include "XDecode.h"
 
@@ -173,7 +173,7 @@ bool XDemuxThread::Open(const char *url, IVideoCall *call)
 void XDemuxThread::Close()
 {
 	isExit = true;
-	wait();
+	wait1();
 	if (vt) vt->Close();
 	if (at) at->Close();
 	mux.lock();
@@ -191,9 +191,9 @@ void XDemuxThread::Start()
 	if (!vt) vt = new XVideoThread();
 	if (!at) at = new XAudioThread();
 	//启动当前线程
-	QThread::start();
-	if (vt)vt->start();
-	if (at)at->start();
+	//QThread::start();
+	//if (vt)vt->start();
+	//if (at)at->start();
 	mux.unlock();
 }
 XDemuxThread::XDemuxThread()
@@ -204,5 +204,5 @@ XDemuxThread::XDemuxThread()
 XDemuxThread::~XDemuxThread()
 {
 	isExit = true;
-	wait();
+	wait1();
 }

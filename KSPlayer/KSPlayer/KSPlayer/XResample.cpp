@@ -26,8 +26,8 @@
 
 #include "XResample.h"
 extern "C" {
-#include <libswresample/swresample.h>
-#include <libavcodec/avcodec.h>
+#include "libswresample/swresample.h"
+#include "libavcodec/avcodec.h"
 }
 #pragma comment(lib,"swresample.lib")
 #include <iostream>

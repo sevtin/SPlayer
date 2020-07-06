@@ -1,11 +1,12 @@
 #pragma once
-#include <QThread>
 #include "IVideoCall.h"
+#include "KSThread.h"
 #include <mutex>
 class XDemux;
 class XVideoThread;
 class XAudioThread;
-class XDemuxThread:public QThread
+
+class XDemuxThread: public KSThread
 {
 public:
 	//创建对象并打开

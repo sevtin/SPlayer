@@ -35,10 +35,9 @@ struct AVCodecParameters;
 class XDecode;
 #include <list>
 #include <mutex>
-#include <QThread>
 #include "IVideoCall.h"
-#include "XDecodeThread.h"
-class XVideoThread:public XDecodeThread
+#include "KSThread.h"
+class XVideoThread:public KSThread
 {
 public:
 

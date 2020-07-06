@@ -25,14 +25,14 @@
 //！！！！！！！！！ 学员加群462249121下载代码和交流
 
 #pragma once
-#include <QThread>
 #include <mutex>
 #include <list>
 struct AVCodecParameters;
 class XAudioPlay;
 class XResample;
 #include "XDecodeThread.h"
-class XAudioThread:public XDecodeThread
+#include "KSThread.h"
+class XAudioThread:public KSThread
 {
 public:
 	//当前音频播放的pts

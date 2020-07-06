@@ -33,7 +33,7 @@ using namespace std;
 
 void XAudioThread::Clear()
 {
-	XDecodeThread::Clear();
+	KSThread::Clear();
 	mux.lock();
 	if (ap) ap->Clear();
 	mux.unlock();
@@ -41,7 +41,7 @@ void XAudioThread::Clear()
 //停止线程，清理资源
 void XAudioThread::Close()
 {
-	XDecodeThread::Close();
+	KSThread::Close();
 	if (res)
 	{
 		res->Close();
@@ -171,5 +171,5 @@ XAudioThread::~XAudioThread()
 {
 	//等待线程退出
 	isExit = true;
-	wait();
+	wait1();
 }
