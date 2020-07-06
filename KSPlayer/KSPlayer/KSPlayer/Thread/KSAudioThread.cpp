@@ -10,7 +10,7 @@ void KSAudioThread::Clear()
 {
     KSThread::Clear();
     mux.lock();
-    if (ap) ap->Clear();
+    if (audio_play) audio_play->Clear();
     mux.unlock();
 }
 //停止线程，清理资源
@@ -25,11 +25,11 @@ void KSAudioThread::Close()
         res = NULL;
         amux.unlock();
     }
-    if (ap)
+    if (audio_play)
     {
-        ap->Close();
+        audio_play->Close();
         amux.lock();
-        ap = NULL;
+        audio_play = NULL;
         amux.unlock();
     }
 }
@@ -46,9 +46,9 @@ bool KSAudioThread::Open(AVCodecParameters *para,int sample_rate, int channels)
         cout << "KSResample open failed!" << endl;
         re = false;
     }
-    ap->sample_rate = sample_rate;
-    ap->channels = channels;
-    if (!ap->Open())
+    audio_play->sample_rate = sample_rate;
+    audio_play->channels = channels;
+    if (!audio_play->Open())
     {
         re = false;
         cout << "XAudioPlay open failed!" << endl;
@@ -67,8 +67,8 @@ void KSAudioThread::SetPause(bool isPause)
 {
     //amux.lock();
     this->isPause = isPause;
-    if (ap)
-        ap->SetPause(isPause);
+    if (audio_play)
+        audio_play->SetPause(isPause);
     //amux.unlock();
 }
 
@@ -86,7 +86,7 @@ void KSAudioThread::run()
         }
         
         //没有数据
-        //if (packs.empty() || !decode || !res || !ap)
+        //if (packs.empty() || !decode || !res || !audio_play)
         //{
         //	mux.unlock();
         //	msleep(1);
@@ -110,7 +110,7 @@ void KSAudioThread::run()
             if (!frame) break;
             
             //减去缓冲中未播放的时间
-            pts = decode->pts - ap->GetNoPlayMs();
+            pts = decode->pts - audio_play->GetNoPlayMs();
             
             //cout << "audio pts = " << pts << endl;
             
@@ -121,12 +121,12 @@ void KSAudioThread::run()
             {
                 if (size <= 0)break;
                 //缓冲未播完，空间不够
-                if (ap->GetFree() < size || isPause)
+                if (audio_play->GetFree() < size || isPause)
                 {
                     msleep(1);
                     continue;
                 }
-                ap->Write(pcm, size);
+                audio_play->Write(pcm, size);
                 break;
             }
         }
@@ -138,7 +138,7 @@ void KSAudioThread::run()
 KSAudioThread::KSAudioThread()
 {
     if (!res) res = new KSResample();
-    if (!ap) ap = KSAudioPlay::Get();
+    if (!audio_play) audio_play = KSAudioPlay::Get();
 }
 
 
