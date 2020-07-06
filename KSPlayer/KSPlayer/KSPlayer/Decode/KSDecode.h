@@ -4,8 +4,8 @@ struct AVCodecParameters;
 struct AVCodecContext;
 struct AVFrame;
 struct AVPacket;
-extern void XFreePacket(AVPacket **pkt);
-extern void XFreeFrame(AVFrame **frame);
+extern void KSFreePacket(AVPacket **pkt);
+extern void KSFreeFrame(AVFrame **frame);
 class KSDecode {
 public:
     bool isAudio = false;
@@ -21,7 +21,7 @@ public:
     
     //获取解码数据，一次send可能需要多次Recv，获取缓冲中的数据Send NULL在Recv多次
     //每次复制一份，由调用者释放 av_frame_free
-    virtual AVFrame* Recv();
+    virtual AVFrame* Receive();
     
     virtual void Close();
     virtual void Clear();

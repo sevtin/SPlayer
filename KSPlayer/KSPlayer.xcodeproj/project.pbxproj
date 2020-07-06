@@ -159,8 +159,8 @@
 		E6BCFBA424B306E100AF8982 /* Decode */ = {
 			isa = PBXGroup;
 			children = (
-				E6BCFB8224B2FFA100AF8982 /* KSDecode.cpp */,
 				E6BCFB8324B2FFA100AF8982 /* KSDecode.h */,
+				E6BCFB8224B2FFA100AF8982 /* KSDecode.cpp */,
 				E6BCFB8624B2FFA100AF8982 /* KSDemux.cpp */,
 				E6BCFB8724B2FFA100AF8982 /* KSDemux.h */,
 				E6BCFB8C24B2FFA100AF8982 /* KSResample.cpp */,

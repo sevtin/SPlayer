@@ -106,7 +106,7 @@ void KSAudioThread::run()
         //一次send 多次recv
         while (!isExit)
         {
-            AVFrame * frame = decode->Recv();
+            AVFrame * frame = decode->Receive();
             if (!frame) break;
             
             //减去缓冲中未播放的时间

@@ -63,7 +63,7 @@ void KSVideoThread::run()
         //一次send 多次recv
         while (!isExit)
         {
-            AVFrame * frame = decode->Recv();
+            AVFrame * frame = decode->Receive();
             if (!frame)break;
             //显示视频
             if (call)
@@ -85,7 +85,7 @@ bool KSVideoThread::RepaintPts(AVPacket *pkt, long long seekpts)
         vmux.unlock();
         return true; //表示结束解码
     }
-    AVFrame *frame = decode->Recv();
+    AVFrame *frame = decode->Receive();
     if (!frame)
     {
         vmux.unlock();
@@ -99,7 +99,7 @@ bool KSVideoThread::RepaintPts(AVPacket *pkt, long long seekpts)
         vmux.unlock();
         return true;
     }
-    XFreeFrame(&frame);
+    KSFreeFrame(&frame);
     vmux.unlock();
     return false;
 }

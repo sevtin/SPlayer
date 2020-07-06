@@ -27,6 +27,5 @@ protected:
     std::mutex amux;
     KSAudioPlay *ap = 0;
     KSResample *res = 0;
-    
 };
 

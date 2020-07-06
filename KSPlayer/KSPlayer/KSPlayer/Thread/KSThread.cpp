@@ -50,7 +50,7 @@ void KSThread::Clear()
     while (!packs.empty())
     {
         AVPacket *pkt = packs.front();
-        XFreePacket(&pkt);
+        KSFreePacket(&pkt);
         packs.pop_front();
     }
     

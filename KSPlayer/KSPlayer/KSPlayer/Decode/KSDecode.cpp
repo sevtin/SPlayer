@@ -3,21 +3,19 @@
 extern "C" {
 #include"libavcodec/avcodec.h"
 }
-
 using namespace std;
 
-void XFreePacket(AVPacket **pkt)
-{
+void KSFreePacket(AVPacket **pkt) {
     if (!pkt || !(*pkt))return;
     av_packet_free(pkt);
 }
-void XFreeFrame(AVFrame **frame)
-{
+
+void KSFreeFrame(AVFrame **frame) {
     if (!frame || !(*frame))return;
     av_frame_free(frame);
 }
-void KSDecode::Close()
-{
+
+void KSDecode::Close() {
     mux.lock();
     if (codec)
     {
@@ -28,8 +26,7 @@ void KSDecode::Close()
     mux.unlock();
 }
 
-void KSDecode::Clear()
-{
+void KSDecode::Clear() {
     mux.lock();
     //清理解码缓冲
     if (codec)
@@ -39,8 +36,7 @@ void KSDecode::Clear()
 }
 
 //打开解码器
-bool KSDecode::Open(AVCodecParameters *para)
-{
+bool KSDecode::Open(AVCodecParameters *para) {
     if (!para) return false;
     Close();
     //////////////////////////////////////////////////////////
@@ -81,8 +77,7 @@ bool KSDecode::Open(AVCodecParameters *para)
     return true;
 }
 //发送到解码线程，不管成功与否都释放pkt空间（对象和媒体内容）
-bool KSDecode::Send(AVPacket *pkt)
-{
+bool KSDecode::Send(AVPacket *pkt) {
     //容错处理
     if (!pkt || pkt->size <= 0 || !pkt->data)return false;
     mux.lock();
@@ -100,8 +95,7 @@ bool KSDecode::Send(AVPacket *pkt)
 
 //获取解码数据，一次send可能需要多次Recv，获取缓冲中的数据Send NULL在Recv多次
 //每次复制一份，由调用者释放 av_frame_free
-AVFrame* KSDecode::Recv()
-{
+AVFrame* KSDecode::Receive() {
     mux.lock();
     if (!codec)
     {
