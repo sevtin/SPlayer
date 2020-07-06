@@ -1,8 +1,8 @@
 #pragma once
 class KSAudioPlay {
 public:
-    int sampleRate = 44100;
-    int sampleSize = 16;
+    int sample_rate = 44100;
+    int sample_size = 16;
     int channels = 2;
     
     //打开音频播放

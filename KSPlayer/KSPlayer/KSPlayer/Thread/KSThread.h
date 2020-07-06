@@ -14,7 +14,6 @@ struct AVPacket;
 class KSDecode;
 
 class KSThread {
-    
 public:
     //bool isExit = false;
     virtual void msleep(int ms);

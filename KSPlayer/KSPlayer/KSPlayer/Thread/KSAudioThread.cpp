@@ -33,7 +33,7 @@ void KSAudioThread::Close()
         amux.unlock();
     }
 }
-bool KSAudioThread::Open(AVCodecParameters *para,int sampleRate, int channels)
+bool KSAudioThread::Open(AVCodecParameters *para,int sample_rate, int channels)
 {
     if (!para)return false;
     Clear();
@@ -46,7 +46,7 @@ bool KSAudioThread::Open(AVCodecParameters *para,int sampleRate, int channels)
         cout << "KSResample open failed!" << endl;
         re = false;
     }
-    ap->sampleRate = sampleRate;
+    ap->sample_rate = sample_rate;
     ap->channels = channels;
     if (!ap->Open())
     {

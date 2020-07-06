@@ -133,8 +133,8 @@
 				E6BCFBA424B306E100AF8982 /* Decode */,
 				E6BCFBA324B306C300AF8982 /* Thread */,
 				E6BCFB7D24B2FFA100AF8982 /* KSProtocol.h */,
-				E6BCFB7E24B2FFA100AF8982 /* KSAudioPlay.cpp */,
 				E6BCFB7F24B2FFA100AF8982 /* KSAudioPlay.h */,
+				E6BCFB7E24B2FFA100AF8982 /* KSAudioPlay.cpp */,
 			);
 			path = KSPlayer;
 			sourceTree = "<group>";
@@ -142,16 +142,16 @@
 		E6BCFBA324B306C300AF8982 /* Thread */ = {
 			isa = PBXGroup;
 			children = (
-				E6BCFB8824B2FFA100AF8982 /* KSDemuxThread.cpp */,
 				E6BCFB8924B2FFA100AF8982 /* KSDemuxThread.h */,
-				E6BCFB9024B2FFA100AF8982 /* KSVideoThread.cpp */,
+				E6BCFB8824B2FFA100AF8982 /* KSDemuxThread.cpp */,
 				E6BCFB9124B2FFA100AF8982 /* KSVideoThread.h */,
-				E6BCFBA024B3006C00AF8982 /* KSThread.cpp */,
+				E6BCFB9024B2FFA100AF8982 /* KSVideoThread.cpp */,
 				E6BCFBA124B3006C00AF8982 /* KSThread.h */,
-				E6BCFB8424B2FFA100AF8982 /* XDecodeThread.cpp */,
+				E6BCFBA024B3006C00AF8982 /* KSThread.cpp */,
 				E6BCFB8524B2FFA100AF8982 /* XDecodeThread.h */,
-				E6BCFB8024B2FFA100AF8982 /* KSAudioThread.cpp */,
+				E6BCFB8424B2FFA100AF8982 /* XDecodeThread.cpp */,
 				E6BCFB8124B2FFA100AF8982 /* KSAudioThread.h */,
+				E6BCFB8024B2FFA100AF8982 /* KSAudioThread.cpp */,
 			);
 			path = Thread;
 			sourceTree = "<group>";
@@ -163,8 +163,8 @@
 				E6BCFB8224B2FFA100AF8982 /* KSDecode.cpp */,
 				E6BCFB8724B2FFA100AF8982 /* KSDemux.h */,
 				E6BCFB8624B2FFA100AF8982 /* KSDemux.cpp */,
-				E6BCFB8C24B2FFA100AF8982 /* KSResample.cpp */,
 				E6BCFB8D24B2FFA100AF8982 /* KSResample.h */,
+				E6BCFB8C24B2FFA100AF8982 /* KSResample.cpp */,
 			);
 			path = Decode;
 			sourceTree = "<group>";

@@ -27,7 +27,5 @@ public:
 protected:
     KSProtocol *call = 0;
     std::mutex vmux;
-    
-    
 };
 
