@@ -33,7 +33,7 @@ void KSDemuxThread::Seek(double pos)
     if (demux)
         demux->Seek(pos);
     //实际要显示的位置pts
-    long long seekPts = pos*demux->totalMs;
+    long long seekPts = pos*demux->total_ms;
     while (!isExit)
     {
         AVPacket *pkt = demux->ReadVideo();
@@ -161,7 +161,7 @@ bool KSDemuxThread::Open(const char *url, KSProtocol *call)
         re = false;
         cout << "at->Open failed!" << endl;
     }
-    totalMs = demux->totalMs;
+    total_ms = demux->total_ms;
     mux.unlock();
     
     cout << "KSDemuxThread::Open " << re << endl;

@@ -26,7 +26,7 @@ public:
     virtual ~KSDemuxThread();
     bool isExit = false;
     long long pts = 0;
-    long long totalMs = 0;
+    long long total_ms = 0;
     void SetPause(bool isPause);
     bool isPause = false;
 protected:

@@ -44,8 +44,8 @@ bool KSDemux::Open(const char *url)
     re = avformat_find_stream_info(ic, 0);
     
     //总时长 毫秒
-    this->totalMs = ic->duration / (AV_TIME_BASE / 1000);
-    cout << "totalMs = " << totalMs << endl;
+    this->total_ms = ic->duration / (AV_TIME_BASE / 1000);
+    cout << "totalMs = " << total_ms << endl;
     
     //打印视频流详细信息
     av_dump_format(ic, 0, url, 0);
@@ -110,7 +110,7 @@ void KSDemux::Close()
     }
     avformat_close_input(&ic);
     //媒体总时长（毫秒）
-    totalMs = 0;
+    total_ms = 0;
     mux.unlock();
 }
 

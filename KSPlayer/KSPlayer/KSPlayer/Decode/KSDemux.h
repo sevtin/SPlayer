@@ -35,7 +35,7 @@ public:
     virtual ~KSDemux();
     
     //媒体总时长（毫秒）
-    int totalMs = 0;
+    int total_ms = 0;
     int width = 0;
     int height = 0;
     int sampleRate = 0;
