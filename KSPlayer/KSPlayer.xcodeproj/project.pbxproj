@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E6BCFB5E24B2FE1F00AF8982 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB5D24B2FE1F00AF8982 /* AppDelegate.m */; };
-		E6BCFB6124B2FE1F00AF8982 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB6024B2FE1F00AF8982 /* ViewController.m */; };
+		E6BCFB6124B2FE1F00AF8982 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB6024B2FE1F00AF8982 /* ViewController.mm */; };
 		E6BCFB6324B2FE2000AF8982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6BCFB6224B2FE2000AF8982 /* Assets.xcassets */; };
 		E6BCFB6624B2FE2000AF8982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BCFB6424B2FE2000AF8982 /* Main.storyboard */; };
 		E6BCFB6924B2FE2000AF8982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB6824B2FE2000AF8982 /* main.m */; };
@@ -26,6 +26,9 @@
 		E6BCFB9C24B2FFA100AF8982 /* KSResample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB8C24B2FFA100AF8982 /* KSResample.cpp */; };
 		E6BCFB9E24B2FFA100AF8982 /* KSVideoThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFB9024B2FFA100AF8982 /* KSVideoThread.cpp */; };
 		E6BCFBA224B3006C00AF8982 /* KSThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BCFBA024B3006C00AF8982 /* KSThread.cpp */; };
+		E6BCFBA624B30FB500AF8982 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBA524B30FB500AF8982 /* libz.tbd */; };
+		E6BCFBA824B30FBC00AF8982 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBA724B30FBC00AF8982 /* libiconv.tbd */; };
+		E6BCFBAA24B30FC400AF8982 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCFBA924B30FC400AF8982 /* libbz2.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +36,7 @@
 		E6BCFB5C24B2FE1F00AF8982 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E6BCFB5D24B2FE1F00AF8982 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E6BCFB5F24B2FE1F00AF8982 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E6BCFB6024B2FE1F00AF8982 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E6BCFB6024B2FE1F00AF8982 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		E6BCFB6224B2FE2000AF8982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6BCFB6524B2FE2000AF8982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6BCFB6724B2FE2000AF8982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +66,9 @@
 		E6BCFB9124B2FFA100AF8982 /* KSVideoThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSVideoThread.h; sourceTree = "<group>"; };
 		E6BCFBA024B3006C00AF8982 /* KSThread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KSThread.cpp; sourceTree = "<group>"; };
 		E6BCFBA124B3006C00AF8982 /* KSThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSThread.h; sourceTree = "<group>"; };
+		E6BCFBA524B30FB500AF8982 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E6BCFBA724B30FBC00AF8982 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		E6BCFBA924B30FC400AF8982 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6BCFBAA24B30FC400AF8982 /* libbz2.tbd in Frameworks */,
+				E6BCFBA824B30FBC00AF8982 /* libiconv.tbd in Frameworks */,
+				E6BCFBA624B30FB500AF8982 /* libz.tbd in Frameworks */,
 				E6BCFB7224B2FE9B00AF8982 /* libavformat.a in Frameworks */,
 				E6BCFB7424B2FE9F00AF8982 /* libavcodec.a in Frameworks */,
 				E6BCFB7624B2FEA400AF8982 /* libavutil.a in Frameworks */,
@@ -105,7 +114,7 @@
 				E6BCFB5C24B2FE1F00AF8982 /* AppDelegate.h */,
 				E6BCFB5D24B2FE1F00AF8982 /* AppDelegate.m */,
 				E6BCFB5F24B2FE1F00AF8982 /* ViewController.h */,
-				E6BCFB6024B2FE1F00AF8982 /* ViewController.m */,
+				E6BCFB6024B2FE1F00AF8982 /* ViewController.mm */,
 				E6BCFB6224B2FE2000AF8982 /* Assets.xcassets */,
 				E6BCFB6424B2FE2000AF8982 /* Main.storyboard */,
 				E6BCFB6724B2FE2000AF8982 /* Info.plist */,
@@ -118,6 +127,9 @@
 		E6BCFB7024B2FE9B00AF8982 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6BCFBA924B30FC400AF8982 /* libbz2.tbd */,
+				E6BCFBA724B30FBC00AF8982 /* libiconv.tbd */,
+				E6BCFBA524B30FB500AF8982 /* libz.tbd */,
 				E6BCFB7924B2FEBC00AF8982 /* libswscale.a */,
 				E6BCFB7724B2FEB600AF8982 /* libswresample.a */,
 				E6BCFB7524B2FEA400AF8982 /* libavutil.a */,
@@ -239,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6BCFB9E24B2FFA100AF8982 /* KSVideoThread.cpp in Sources */,
-				E6BCFB6124B2FE1F00AF8982 /* ViewController.m in Sources */,
+				E6BCFB6124B2FE1F00AF8982 /* ViewController.mm in Sources */,
 				E6BCFB6924B2FE2000AF8982 /* main.m in Sources */,
 				E6BCFB9524B2FFA100AF8982 /* KSAudioPlay.cpp in Sources */,
 				E6BCFB9624B2FFA100AF8982 /* KSAudioThread.cpp in Sources */,

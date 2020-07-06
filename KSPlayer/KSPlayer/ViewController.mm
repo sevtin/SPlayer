@@ -7,13 +7,24 @@
 //
 
 #import "ViewController.h"
+#include "KSDemuxThread.h"
 
+@interface ViewController() {
+    KSDemuxThread *demuxThread;
+}
+
+@end
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    demuxThread = new KSDemuxThread();
+    char *url = "/Users/saeipi/Downloads/File/SOPSandwich.mp4";
+    demuxThread->Open(url, NULL);
+
     // Do any additional setup after loading the view.
+    
 }
 
 
@@ -22,6 +33,5 @@
 
     // Update the view, if already loaded.
 }
-
 
 @end
