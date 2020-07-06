@@ -156,7 +156,7 @@ bool KSDemuxThread::Open(const char *url, KSProtocol *call)
         cout << "vt->Open failed!" << endl;
     }
     //打开音频解码器和处理线程
-    if (!at->Open(demux->CopyAPara(), demux->sampleRate, demux->channels))
+    if (!at->Open(demux->CopyAPara(), demux->sample_rate, demux->channels))
     {
         re = false;
         cout << "at->Open failed!" << endl;

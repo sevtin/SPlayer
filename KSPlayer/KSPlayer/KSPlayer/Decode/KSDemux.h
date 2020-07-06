@@ -38,7 +38,7 @@ public:
     int total_ms = 0;
     int width = 0;
     int height = 0;
-    int sampleRate = 0;
+    int sample_rate = 0;
     int channels = 0;
     
     
