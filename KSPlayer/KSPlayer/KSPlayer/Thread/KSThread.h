@@ -33,6 +33,7 @@ public:
     int maxList = 100;
     bool isExit = false;
     
+    
     KSThread();
     virtual ~KSThread();
     

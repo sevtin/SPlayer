@@ -29,8 +29,7 @@ KSThread::~KSThread() {
 
 
 //清理资源，停止线程
-void KSThread::Close()
-{
+void KSThread::Close() {
     Clear();
     
     //等待线程退出
@@ -43,8 +42,7 @@ void KSThread::Close()
     decode = NULL;
     mux.unlock();
 }
-void KSThread::Clear()
-{
+void KSThread::Clear() {
     mux.lock();
     decode->Clear();
     while (!packs.empty())
@@ -59,8 +57,7 @@ void KSThread::Clear()
 
 
 //取出一帧数据，并出栈，如果没有返回NULL
-AVPacket *KSThread::Pop()
-{
+AVPacket *KSThread::Pop() {
     mux.lock();
     if (packs.empty())
     {
@@ -72,15 +69,13 @@ AVPacket *KSThread::Pop()
     mux.unlock();
     return pkt;
 }
-void KSThread::Push(AVPacket *pkt)
-{
+
+void KSThread::Push(AVPacket *pkt) {
     if (!pkt)return;
     //阻塞
-    while (!isExit)
-    {
+    while (!isExit) {
         mux.lock();
-        if (packs.size() < maxList)
-        {
+        if (packs.size() < maxList) {
             packs.push_back(pkt);
             mux.unlock();
             break;

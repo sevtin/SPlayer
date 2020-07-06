@@ -4,8 +4,6 @@ extern "C" {
 #include "libswresample/swresample.h"
 #include "libavcodec/avcodec.h"
 }
-//#pragma comment(lib,"swresample.lib")
-
 using namespace std;
 
 void KSResample::Close()

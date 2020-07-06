@@ -79,14 +79,12 @@ void KSDemuxThread::Runloop(){
     while (!isExit)
     {
         mux.lock();
-        if (isPause)
-        {
+        if (isPause) {
             mux.unlock();
             msleep(5);
             continue;
         }
-        if (!demux)
-        {
+        if (!demux) {
             mux.unlock();
             msleep(5);
             continue;
@@ -94,16 +92,13 @@ void KSDemuxThread::Runloop(){
         
         
         //音视频同步
-        if (video_thread && audio_thread)
-        {
+        if (video_thread && audio_thread) {
             pts = audio_thread->pts;
             video_thread->synpts = audio_thread->pts;
         }
         
-        
         AVPacket *pkt = demux->Read();
-        if (!pkt) 
-        {
+        if (!pkt)  {
             mux.unlock();
             msleep(5);
             continue;
@@ -111,18 +106,10 @@ void KSDemuxThread::Runloop(){
         //判断数据是音频
         if (demux->IsAudio(pkt))
         {
-            //while (audio_thread->IsFull())
-            {
-                //	video_thread->synpts = audio_thread->pts;
-            }
-            if(audio_thread)audio_thread->Push(pkt);
+            //if(audio_thread)audio_thread->Push(pkt);
         }
         else //视频
         {
-            //while (video_thread->IsFull())
-            //{
-            //	video_thread->synpts = audio_thread->pts;
-            //}
             if (video_thread)video_thread->Push(pkt);
         }
         mux.unlock();
@@ -184,25 +171,26 @@ void StartDemuxThread(KSDemuxThread *demux_thread) {
     demux_thread->Runloop();
 }
 
+void StartVideoThread(KSVideoThread *video_thread) {
+    video_thread->Runloop();
+}
 //启动所有线程
 void KSDemuxThread::Start()
 {
-    mux.lock();
+    //mux.lock();
     if (!demux) demux = new KSDemux();
     if (!video_thread) video_thread = new KSVideoThread();
     if (!audio_thread) audio_thread = new KSAudioThread();
     
-    std::thread thread(StartDemuxThread,this);
-    if (video_thread) {
-        video_thread->Start();
-        //std::thread thread(StartVideoThread,video_thread);
-    }
+    std::thread threads[2];
+    threads[0] = std::thread(StartDemuxThread,this);
+    threads[1] = std::thread(StartVideoThread,video_thread);
     
-    //启动当前线程
-    //QThread::start();
-    //if (video_thread)video_thread->start();
-    //if (audio_thread)audio_thread->start();
-    mux.unlock();
+    std::cout << "Done spawning threads. Now waiting for them to join:\n";
+    for (auto &thread : threads) {
+        thread.join();
+    }
+    std::cout << "All threads joined!\n";
 }
 
 

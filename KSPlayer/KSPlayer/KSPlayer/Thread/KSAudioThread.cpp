@@ -6,27 +6,24 @@
 
 using namespace std;
 
-void KSAudioThread::Clear()
-{
+void KSAudioThread::Clear() {
     KSThread::Clear();
     mux.lock();
     if (audio_play) audio_play->Clear();
     mux.unlock();
 }
+
 //停止线程，清理资源
-void KSAudioThread::Close()
-{
+void KSAudioThread::Close()  {
     KSThread::Close();
-    if (res)
-    {
+    if (res) {
         res->Close();
         amux.lock();
         delete res;
         res = NULL;
         amux.unlock();
     }
-    if (audio_play)
-    {
+    if (audio_play) {
         audio_play->Close();
         amux.lock();
         audio_play = NULL;
@@ -41,20 +38,17 @@ bool KSAudioThread::Open(AVCodecParameters *para,int sample_rate, int channels)
     amux.lock();
     pts = 0;
     bool re = true;
-    if (!res->Open(para, false))
-    {
+    if (!res->Open(para, false)) {
         cout << "KSResample open failed!" << endl;
         re = false;
     }
     audio_play->sample_rate = sample_rate;
     audio_play->channels = channels;
-    if (!audio_play->Open())
-    {
+    if (!audio_play->Open()) {
         re = false;
         cout << "XAudioPlay open failed!" << endl;
     }
-    if (!decode->Open(para))
-    {
+    if (!decode->Open(para)) {
         cout << "audio XDecode open failed!" << endl;
         re = false;
     }
@@ -78,8 +72,7 @@ void KSAudioThread::Runloop()
     while (!isExit)
     {
         amux.lock();
-        if (isPause)
-        {
+        if (isPause) {
             amux.unlock();
             msleep(5);
             continue;

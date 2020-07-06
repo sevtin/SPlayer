@@ -7,6 +7,7 @@
 //
 
 #include "KSProtocol.h"
+#include <mutex>
 extern "C" {
 #include "SDL2/SDL.h"
 }
@@ -23,4 +24,6 @@ public:
     SDL_Rect sdl_rect;
     int ctx_width;
     int ctx_height;
+protected:
+    std::mutex mux;
 };

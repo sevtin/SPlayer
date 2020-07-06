@@ -63,16 +63,13 @@ void KSVideoThread::Runloop()
             continue;
         }
         //一次send 多次recv
-        while (!isExit)
-        {
+        while (!isExit) {
             AVFrame * frame = decode->Receive();
             if (!frame)break;
             //显示视频
-            if (call)
-            {
+            if (call) {
                 call->Repaint(frame);
             }
-            
         }
         vmux.unlock();
     }
@@ -105,17 +102,16 @@ bool KSVideoThread::RepaintPts(AVPacket *pkt, long long seekpts)
     vmux.unlock();
     return false;
 }
-
+/*
 void StartVideoThread(KSVideoThread *video_thread) {
     video_thread->Runloop();
 }
 
 //启动所有线程
 void KSVideoThread::Start() {
-    Runloop();
-    //std::thread thread(StartVideoThread,this);
+    std::thread thread(StartVideoThread,this);
 }
-
+*/
 KSVideoThread::KSVideoThread()
 {
 }
