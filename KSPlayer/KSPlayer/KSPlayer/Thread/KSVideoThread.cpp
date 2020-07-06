@@ -33,7 +33,7 @@ void KSVideoThread::SetPause(bool isPause)
     this->isPause = isPause;
     vmux.unlock();
 }
-void KSVideoThread::run()
+void KSVideoThread::Runloop()
 {
     while (!isExit)
     {

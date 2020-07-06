@@ -72,7 +72,7 @@ void KSAudioThread::SetPause(bool isPause)
     //amux.unlock();
 }
 
-void KSAudioThread::run()
+void KSAudioThread::Runloop()
 {
     unsigned char *pcm = new unsigned char[1024 * 1024 * 10];
     while (!isExit)

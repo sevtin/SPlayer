@@ -21,7 +21,7 @@ public:
     
     virtual void Seek(double pos);
     
-    void run();
+    void Runloop();
     KSDemuxThread();
     virtual ~KSDemuxThread();
     bool isExit = false;

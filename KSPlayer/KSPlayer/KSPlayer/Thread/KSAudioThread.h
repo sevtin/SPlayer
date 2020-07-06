@@ -18,7 +18,7 @@ public:
     virtual void Close();
     
     virtual void Clear();
-    void run();
+    void Runloop();
     KSAudioThread();
     virtual ~KSAudioThread();
     void SetPause(bool isPause);

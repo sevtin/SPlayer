@@ -74,7 +74,7 @@ void KSDemuxThread::SetPause(bool isPause)
     mux.unlock();
 }
 
-void KSDemuxThread::run()
+void KSDemuxThread::Runloop()
 {
     while (!isExit)
     {
@@ -195,6 +195,8 @@ void KSDemuxThread::Start()
     //if (audio_thread)audio_thread->start();
     mux.unlock();
 }
+
+
 KSDemuxThread::KSDemuxThread()
 {
 }
