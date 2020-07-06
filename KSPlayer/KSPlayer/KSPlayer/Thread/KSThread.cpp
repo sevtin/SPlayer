@@ -19,11 +19,11 @@ void KSThread::wait1() {
 }
 
 KSThread::KSThread() {
-
+    
 }
 
 KSThread::~KSThread() {
-
+    
 }
 
 
