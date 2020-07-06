@@ -32,6 +32,6 @@ public:
 protected:
     std::mutex mux;
     KSDemux *demux = 0;
-    KSVideoThread *vt = 0;
-    KSAudioThread *at = 0;
+    KSVideoThread *video_thread = 0;
+    KSAudioThread *audio_thread = 0;
 };

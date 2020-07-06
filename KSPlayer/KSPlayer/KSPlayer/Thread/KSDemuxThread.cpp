@@ -13,8 +13,8 @@ void KSDemuxThread::Clear()
 {
     mux.lock();
     if (demux)demux->Clear();
-    if (vt) vt->Clear();
-    if (at) at->Clear();
+    if (video_thread) video_thread->Clear();
+    if (audio_thread) audio_thread->Clear();
     mux.unlock();
 }
 
@@ -39,20 +39,20 @@ void KSDemuxThread::Seek(double pos)
         AVPacket *pkt = demux->ReadVideo();
         if (!pkt) break;
         //如果解码到seekPts
-        if (vt->RepaintPts(pkt, seekPts))
+        if (video_thread->RepaintPts(pkt, seekPts))
         {
             this->pts = seekPts;
             break;
         }
-        //bool re = vt->decode->Send(pkt);
+        //bool re = video_thread->decode->Send(pkt);
         //if (!re) break;
-        //AVFrame *frame = vt->decode->Recv();
+        //AVFrame *frame = video_thread->decode->Recv();
         //if (!frame) continue;
         ////到达位置
         //if (frame->pts >= seekPts)
         //{
         //	this->pts = frame->pts;
-        //	vt->call->Repaint(frame);
+        //	video_thread->call->Repaint(frame);
         //	break;
         //}
         //av_frame_free(&frame);
@@ -69,8 +69,8 @@ void KSDemuxThread::SetPause(bool isPause)
 {
     mux.lock();
     this->isPause = isPause;
-    if (at) at->SetPause(isPause);
-    if (vt) vt->SetPause(isPause);
+    if (audio_thread) audio_thread->SetPause(isPause);
+    if (video_thread) video_thread->SetPause(isPause);
     mux.unlock();
 }
 
@@ -94,10 +94,10 @@ void KSDemuxThread::run()
         
         
         //音视频同步
-        if (vt && at)
+        if (video_thread && audio_thread)
         {
-            pts = at->pts;
-            vt->synpts = at->pts;
+            pts = audio_thread->pts;
+            video_thread->synpts = audio_thread->pts;
         }
         
         
@@ -111,19 +111,19 @@ void KSDemuxThread::run()
         //判断数据是音频
         if (demux->IsAudio(pkt))
         {
-            //while (at->IsFull())
+            //while (audio_thread->IsFull())
             {
-                //	vt->synpts = at->pts;
+                //	video_thread->synpts = audio_thread->pts;
             }
-            if(at)at->Push(pkt);
+            if(audio_thread)audio_thread->Push(pkt);
         }
         else //视频
         {
-            //while (vt->IsFull())
+            //while (video_thread->IsFull())
             //{
-            //	vt->synpts = at->pts;
+            //	video_thread->synpts = audio_thread->pts;
             //}
-            if (vt)vt->Push(pkt);
+            if (video_thread)video_thread->Push(pkt);
         }
         mux.unlock();
         msleep(1);
@@ -138,8 +138,8 @@ bool KSDemuxThread::Open(const char *url, KSProtocol *call)
     
     mux.lock();
     if (!demux) demux = new KSDemux();
-    if (!vt) vt = new KSVideoThread();
-    if (!at) at = new KSAudioThread();
+    if (!video_thread) video_thread = new KSVideoThread();
+    if (!audio_thread) audio_thread = new KSAudioThread();
     
     //打开解封装
     bool re = demux->Open(url);
@@ -150,16 +150,16 @@ bool KSDemuxThread::Open(const char *url, KSProtocol *call)
         return false;
     }
     //打开视频解码器和处理线程
-    if (!vt->Open(demux->CopyVPara(), call, demux->width, demux->height))
+    if (!video_thread->Open(demux->CopyVPara(), call, demux->width, demux->height))
     {
         re = false;
-        cout << "vt->Open failed!" << endl;
+        cout << "video_thread->Open failed!" << endl;
     }
     //打开音频解码器和处理线程
-    if (!at->Open(demux->CopyAPara(), demux->sample_rate, demux->channels))
+    if (!audio_thread->Open(demux->CopyAPara(), demux->sample_rate, demux->channels))
     {
         re = false;
-        cout << "at->Open failed!" << endl;
+        cout << "audio_thread->Open failed!" << endl;
     }
     total_ms = demux->total_ms;
     mux.unlock();
@@ -173,13 +173,13 @@ void KSDemuxThread::Close()
 {
     isExit = true;
     wait1();
-    if (vt) vt->Close();
-    if (at) at->Close();
+    if (video_thread) video_thread->Close();
+    if (audio_thread) audio_thread->Close();
     mux.lock();
-    delete vt;
-    delete at;
-    vt = NULL;
-    at = NULL;
+    delete video_thread;
+    delete audio_thread;
+    video_thread = NULL;
+    audio_thread = NULL;
     mux.unlock();
 }
 //启动所有线程
@@ -187,12 +187,12 @@ void KSDemuxThread::Start()
 {
     mux.lock();
     if (!demux) demux = new KSDemux();
-    if (!vt) vt = new KSVideoThread();
-    if (!at) at = new KSAudioThread();
+    if (!video_thread) video_thread = new KSVideoThread();
+    if (!audio_thread) audio_thread = new KSAudioThread();
     //启动当前线程
     //QThread::start();
-    //if (vt)vt->start();
-    //if (at)at->start();
+    //if (video_thread)video_thread->start();
+    //if (audio_thread)audio_thread->start();
     mux.unlock();
 }
 KSDemuxThread::KSDemuxThread()
