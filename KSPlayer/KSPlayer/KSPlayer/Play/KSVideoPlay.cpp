@@ -45,14 +45,14 @@ void KSVideoPlay::Init(int width, int height) {
 }
 
 void KSVideoPlay::Repaint(AVFrame *frame) {
-    mux.lock();
     if (frame->width != ctx_width || frame->height != ctx_height) {
+        mux.lock();
         ctx_width = frame->width;
         ctx_height = frame->height;
         mux.unlock();
         return;
     }
-    mux.unlock();
+    
     sdl_rect.x   = 0;
     sdl_rect.y   = 0;
     sdl_rect.w   = frame->width;
@@ -64,5 +64,4 @@ void KSVideoPlay::Repaint(AVFrame *frame) {
     SDL_RenderClear(sdl_renderer);
     SDL_RenderCopy(sdl_renderer, sdl_texture, NULL, NULL);
     SDL_RenderPresent(sdl_renderer);
-    
 }

@@ -181,11 +181,10 @@ void KSDemuxThread::Start()
     if (!demux) demux = new KSDemux();
     if (!video_thread) video_thread = new KSVideoThread();
     if (!audio_thread) audio_thread = new KSAudioThread();
-    
+
     std::thread threads[2];
     threads[0] = std::thread(StartDemuxThread,this);
     threads[1] = std::thread(StartVideoThread,video_thread);
-    
     std::cout << "Done spawning threads. Now waiting for them to join:\n";
     for (auto &thread : threads) {
         thread.join();

@@ -7,7 +7,9 @@ using namespace std;
 //打开，不管成功与否都清理
 bool KSVideoThread::Open(AVCodecParameters *para, KSProtocol *call,int width,int height)
 {
-    if (!para)return false;
+    if (!para){
+        return false;
+    }
     Clear();
     
     vmux.lock();
@@ -65,7 +67,9 @@ void KSVideoThread::Runloop()
         //一次send 多次recv
         while (!isExit) {
             AVFrame * frame = decode->Receive();
-            if (!frame)break;
+            if (!frame){
+                break;
+            }
             //显示视频
             if (call) {
                 call->Repaint(frame);
