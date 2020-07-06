@@ -4,9 +4,9 @@ using namespace std;
 extern "C" {
 #include "libavformat/avformat.h"
 }
-#pragma comment(lib,"avformat.lib")
-#pragma comment(lib,"avutil.lib")
-#pragma comment(lib,"avcodec.lib")
+//#pragma comment(lib,"avformat.lib")
+//#pragma comment(lib,"avutil.lib")
+//#pragma comment(lib,"avcodec.lib")
 static double r2d(AVRational r)
 {
     return r.den == 0 ? 0 : (double)r.num / (double)r.den;

@@ -1,13 +1,13 @@
 #pragma once
-
-///解码和显示视频
-struct AVPacket;
-struct AVCodecParameters;
-class XDecode;
 #include <list>
 #include <mutex>
 #include "KSProtocol.h"
 #include "KSThread.h"
+///解码和显示视频
+struct AVPacket;
+struct AVCodecParameters;
+class XDecode;
+
 class KSVideoThread:public KSThread
 {
 public:

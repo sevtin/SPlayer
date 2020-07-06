@@ -1,6 +1,5 @@
 #pragma once
-class KSAudioPlay
-{
+class KSAudioPlay {
 public:
     int sampleRate = 44100;
     int sampleSize = 16;
@@ -21,4 +20,3 @@ public:
     KSAudioPlay();
     virtual ~KSAudioPlay();
 };
-

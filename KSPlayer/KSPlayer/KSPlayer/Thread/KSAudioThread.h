@@ -1,13 +1,13 @@
 #pragma once
 #include <mutex>
 #include <list>
+#include "XDecodeThread.h"
+#include "KSThread.h"
 struct AVCodecParameters;
 class KSAudioPlay;
 class KSResample;
-#include "XDecodeThread.h"
-#include "KSThread.h"
-class KSAudioThread:public KSThread
-{
+
+class KSAudioThread:public KSThread {
 public:
     //当前音频播放的pts
     long long pts = 0;

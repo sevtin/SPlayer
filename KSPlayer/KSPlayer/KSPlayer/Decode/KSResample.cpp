@@ -1,10 +1,11 @@
 #include "KSResample.h"
+#include <iostream>
 extern "C" {
 #include "libswresample/swresample.h"
 #include "libavcodec/avcodec.h"
 }
-#pragma comment(lib,"swresample.lib")
-#include <iostream>
+//#pragma comment(lib,"swresample.lib")
+
 using namespace std;
 
 void KSResample::Close()

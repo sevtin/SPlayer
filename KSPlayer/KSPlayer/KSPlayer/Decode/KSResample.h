@@ -1,10 +1,10 @@
 #pragma once
+#include <mutex>
 struct AVCodecParameters;
 struct AVFrame;
 struct SwrContext;
-#include <mutex>
-class KSResample
-{
+
+class KSResample {
 public:
     
     //输出参数和输入参数一致除了采样格式，输出为S16 ,会释放para

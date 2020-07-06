@@ -20,8 +20,6 @@ public:
     virtual void msleep(int ms);
     virtual void wait1();
     
-    
-    
     virtual void Push(AVPacket *pkt);
     
     //清理队列

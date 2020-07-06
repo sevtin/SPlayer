@@ -1,15 +1,14 @@
 #include "KSDemuxThread.h"
+#include <iostream>
 #include "KSDemux.h"
 #include "KSVideoThread.h"
 #include "KSAudioThread.h"
-#include <iostream>
-extern "C"
-    {
-#include "libavformat/avformat.h"
-    }
 #include "KSDecode.h"
-
+extern "C" {
+#include "libavformat/avformat.h"
+}
 using namespace std;
+
 void KSDemuxThread::Clear()
 {
     mux.lock();

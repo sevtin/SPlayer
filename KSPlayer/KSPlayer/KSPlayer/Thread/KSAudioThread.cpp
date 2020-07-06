@@ -1,8 +1,9 @@
 #include "KSAudioThread.h"
+#include <iostream>
 #include "KSDecode.h"
 #include "KSAudioPlay.h"
 #include "KSResample.h"
-#include <iostream>
+
 using namespace std;
 
 void KSAudioThread::Clear()
