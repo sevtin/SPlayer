@@ -11,7 +11,7 @@
 #include "KSDecode.h"
 
 void KSThread::msleep(int ms) {
-    //std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
 void KSThread::wait1() {
@@ -81,6 +81,6 @@ void KSThread::Push(AVPacket *pkt) {
             break;
         }
         mux.unlock();
-        msleep(1);
+        msleep(5);
     }
 }

@@ -46,10 +46,8 @@ void KSVideoPlay::Init(int width, int height) {
 
 void KSVideoPlay::Repaint(AVFrame *frame) {
     if (frame->width != ctx_width || frame->height != ctx_height) {
-        mux.lock();
         ctx_width = frame->width;
         ctx_height = frame->height;
-        mux.unlock();
         return;
     }
     

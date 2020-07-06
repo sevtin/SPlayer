@@ -12,6 +12,7 @@
 
 @interface ViewController() {
     KSDemuxThread *demuxThread;
+    KSVideoPlay *videoPlay;
 }
 
 @end
@@ -21,7 +22,7 @@
     [super viewDidLoad];
 
     demuxThread = new KSDemuxThread();
-    KSVideoPlay *videoPlay = new KSVideoPlay();
+    videoPlay = new KSVideoPlay();
     videoPlay->CreateSDL();
     
     char *url = "/Users/saeipi/Downloads/File/SOPSandwich.mp4";

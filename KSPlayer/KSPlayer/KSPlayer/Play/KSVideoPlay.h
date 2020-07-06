@@ -24,6 +24,4 @@ public:
     SDL_Rect sdl_rect;
     int ctx_width;
     int ctx_height;
-protected:
-    std::mutex mux;
 };

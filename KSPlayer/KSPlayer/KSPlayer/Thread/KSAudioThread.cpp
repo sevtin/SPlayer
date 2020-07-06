@@ -74,7 +74,7 @@ void KSAudioThread::Runloop()
         amux.lock();
         if (isPause) {
             amux.unlock();
-            msleep(5);
+            msleep(10);
             continue;
         }
         
@@ -93,7 +93,7 @@ void KSAudioThread::Runloop()
         if (!re)
         {
             amux.unlock();
-            msleep(1);
+            msleep(5);
             continue;
         }
         //一次send 多次recv
@@ -116,7 +116,7 @@ void KSAudioThread::Runloop()
                 //缓冲未播完，空间不够
                 if (audio_play->GetFree() < size || isPause)
                 {
-                    msleep(1);
+                    msleep(5);
                     continue;
                 }
                 audio_play->Write(pcm, size);
