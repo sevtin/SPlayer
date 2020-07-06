@@ -5,7 +5,7 @@
 //  Created by saeipi on 2020/7/6.
 //  Copyright © 2020 saeipi. All rights reserved.
 //
-
+#pragma once
 #include "KSProtocol.h"
 #include <mutex>
 extern "C" {
