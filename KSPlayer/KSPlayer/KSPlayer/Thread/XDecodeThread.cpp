@@ -1,5 +1,5 @@
 #include "XDecodeThread.h"
-#include "XDecode.h"
+#include "KSDecode.h"
 ////清理资源，停止线程
 //void XDecodeThread::Close()
 //{

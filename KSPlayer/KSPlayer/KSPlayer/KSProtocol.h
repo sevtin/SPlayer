@@ -1,6 +1,6 @@
 #pragma once
 struct AVFrame;
-class IVideoCall
+class KSProtocol
 {
 public:
 	virtual void Init(int width, int height) = 0;

@@ -11,7 +11,7 @@
 #include <mutex>
 ///解码和显示视频
 struct AVPacket;
-class XDecode;
+class KSDecode;
 
 class KSThread {
     
@@ -40,7 +40,7 @@ public:
     virtual ~KSThread();
     
 protected:
-    XDecode *decode = 0;
+    KSDecode *decode = 0;
     std::list <AVPacket *> packs;
     std::mutex mux;
 };

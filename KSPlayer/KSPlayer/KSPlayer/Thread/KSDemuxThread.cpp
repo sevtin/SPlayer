@@ -1,16 +1,16 @@
-#include "XDemuxThread.h"
-#include "XDemux.h"
-#include "XVideoThread.h"
-#include "XAudioThread.h"
+#include "KSDemuxThread.h"
+#include "KSDemux.h"
+#include "KSVideoThread.h"
+#include "KSAudioThread.h"
 #include <iostream>
 extern "C"
 {
 #include "libavformat/avformat.h"
 }
-#include "XDecode.h"
+#include "KSDecode.h"
 
 using namespace std;
-void XDemuxThread::Clear()
+void KSDemuxThread::Clear()
 {
 	mux.lock();
 	if (demux)demux->Clear();
@@ -19,7 +19,7 @@ void XDemuxThread::Clear()
 	mux.unlock();
 }
 
-void XDemuxThread::Seek(double pos)
+void KSDemuxThread::Seek(double pos)
 {
 	//清理缓存
 	Clear();
@@ -66,7 +66,7 @@ void XDemuxThread::Seek(double pos)
 		SetPause(false);
 }
 
-void XDemuxThread::SetPause(bool isPause)
+void KSDemuxThread::SetPause(bool isPause)
 {
 	mux.lock();
 	this->isPause = isPause;
@@ -75,7 +75,7 @@ void XDemuxThread::SetPause(bool isPause)
 	mux.unlock();
 }
 
-void XDemuxThread::run()
+void KSDemuxThread::run()
 {
 	while (!isExit)
 	{
@@ -132,15 +132,15 @@ void XDemuxThread::run()
 }
 
 
-bool XDemuxThread::Open(const char *url, IVideoCall *call)
+bool KSDemuxThread::Open(const char *url, KSProtocol *call)
 {
 	if (url == 0 || url[0] == '\0')
 		return false;
 
 	mux.lock();
-	if (!demux) demux = new XDemux();
-	if (!vt) vt = new XVideoThread();
-	if (!at) at = new XAudioThread();
+	if (!demux) demux = new KSDemux();
+	if (!vt) vt = new KSVideoThread();
+	if (!at) at = new KSAudioThread();
 
 	//打开解封装
 	bool re = demux->Open(url);
@@ -165,12 +165,12 @@ bool XDemuxThread::Open(const char *url, IVideoCall *call)
 	totalMs = demux->totalMs;
 	mux.unlock();
 
-	cout << "XDemuxThread::Open " << re << endl;
+	cout << "KSDemuxThread::Open " << re << endl;
 	return re;
 }
 
 //关闭线程清理资源
-void XDemuxThread::Close()
+void KSDemuxThread::Close()
 {
 	isExit = true;
 	wait1();
@@ -184,24 +184,24 @@ void XDemuxThread::Close()
 	mux.unlock();
 }
 //启动所有线程
-void XDemuxThread::Start()
+void KSDemuxThread::Start()
 {
 	mux.lock();
-	if (!demux) demux = new XDemux();
-	if (!vt) vt = new XVideoThread();
-	if (!at) at = new XAudioThread();
+	if (!demux) demux = new KSDemux();
+	if (!vt) vt = new KSVideoThread();
+	if (!at) at = new KSAudioThread();
 	//启动当前线程
 	//QThread::start();
 	//if (vt)vt->start();
 	//if (at)at->start();
 	mux.unlock();
 }
-XDemuxThread::XDemuxThread()
+KSDemuxThread::KSDemuxThread()
 {
 }
 
 
-XDemuxThread::~XDemuxThread()
+KSDemuxThread::~KSDemuxThread()
 {
 	isExit = true;
 	wait1();

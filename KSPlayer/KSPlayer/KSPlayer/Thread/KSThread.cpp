@@ -8,7 +8,7 @@
 
 #include "KSThread.h"
 #include <thread>
-#include "XDecode.h"
+#include "KSDecode.h"
 
 void KSThread::msleep(int ms) {
     //std::this_thread::sleep_for(std::chrono::milliseconds(ms));

@@ -1,37 +1,11 @@
-/*******************************************************************************
-**                                                                            **
-**                     Jiedi(China nanjing)Ltd.                               **
-**	               创建：夏曹俊，此代码可用作为学习参考                       **
-*******************************************************************************/
-
-/*****************************FILE INFOMATION***********************************
-**
-** Project       : FFmpeg
-** Description   : FFMPEG项目创建示例
-** Contact       : xiacaojun@qq.com
-**        博客   : http://blog.csdn.net/jiedichina
-**		视频课程
-**网易云课堂	http://study.163.com/u/xiacaojun
-**腾讯课堂		https://jiedi.ke.qq.com/
-**csdn学院		http://edu.csdn.net/lecturer/lecturer_detail?lecturer_id=961
-**51cto学院	    http://edu.51cto.com/lecturer/index/user_id-12016059.html
-**下载最新的ffmpeg版本 http://www.ffmpeg.club
-**
-**   ffmpeg+qt播放器 学员群 ：462249121 加入群下载代码和交流
-**   微信公众号  : jiedi2007
-**		头条号	 : 夏曹俊
-**
-*******************************************************************************/
-//！！！！！！！！！ 学员加群462249121下载代码和交流
-
-#include "XAudioThread.h"
-#include "XDecode.h"
-#include "XAudioPlay.h"
-#include "XResample.h"
+#include "KSAudioThread.h"
+#include "KSDecode.h"
+#include "KSAudioPlay.h"
+#include "KSResample.h"
 #include <iostream>
 using namespace std;
 
-void XAudioThread::Clear()
+void KSAudioThread::Clear()
 {
 	KSThread::Clear();
 	mux.lock();
@@ -39,7 +13,7 @@ void XAudioThread::Clear()
 	mux.unlock();
 }
 //停止线程，清理资源
-void XAudioThread::Close()
+void KSAudioThread::Close()
 {
 	KSThread::Close();
 	if (res)
@@ -58,7 +32,7 @@ void XAudioThread::Close()
 		amux.unlock();
 	}
 }
-bool XAudioThread::Open(AVCodecParameters *para,int sampleRate, int channels)
+bool KSAudioThread::Open(AVCodecParameters *para,int sampleRate, int channels)
 {
 	if (!para)return false;
 	Clear();
@@ -68,7 +42,7 @@ bool XAudioThread::Open(AVCodecParameters *para,int sampleRate, int channels)
 	bool re = true;
 	if (!res->Open(para, false))
 	{
-		cout << "XResample open failed!" << endl;
+		cout << "KSResample open failed!" << endl;
 		re = false;
 	}
 	ap->sampleRate = sampleRate;
@@ -84,11 +58,11 @@ bool XAudioThread::Open(AVCodecParameters *para,int sampleRate, int channels)
 		re = false;
 	}
 	amux.unlock();
-	cout << "XAudioThread::Open :" << re << endl;
+	cout << "KSAudioThread::Open :" << re << endl;
 	return re;
 }
 
-void XAudioThread::SetPause(bool isPause)
+void KSAudioThread::SetPause(bool isPause)
 {
 	//amux.lock();
 	this->isPause = isPause;
@@ -97,7 +71,7 @@ void XAudioThread::SetPause(bool isPause)
 	//amux.unlock();
 }
 
-void XAudioThread::run()
+void KSAudioThread::run()
 {
 	unsigned char *pcm = new unsigned char[1024 * 1024 * 10];
 	while (!isExit)
@@ -160,14 +134,14 @@ void XAudioThread::run()
 	delete pcm;
 }
 
-XAudioThread::XAudioThread()
+KSAudioThread::KSAudioThread()
 {
-	if (!res) res = new XResample();
-	if (!ap) ap = XAudioPlay::Get();
+	if (!res) res = new KSResample();
+	if (!ap) ap = KSAudioPlay::Get();
 }
 
 
-XAudioThread::~XAudioThread()
+KSAudioThread::~KSAudioThread()
 {
 	//等待线程退出
 	isExit = true;

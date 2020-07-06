@@ -1,30 +1,4 @@
-/*******************************************************************************
-**                                                                            **
-**                     Jiedi(China nanjing)Ltd.                               **
-**	               创建：夏曹俊，此代码可用作为学习参考                       **
-*******************************************************************************/
-
-/*****************************FILE INFOMATION***********************************
-**
-** Project       : FFmpeg
-** Description   : FFMPEG项目创建示例
-** Contact       : xiacaojun@qq.com
-**        博客   : http://blog.csdn.net/jiedichina
-**		视频课程
-**网易云课堂	http://study.163.com/u/xiacaojun
-**腾讯课堂		https://jiedi.ke.qq.com/
-**csdn学院		http://edu.csdn.net/lecturer/lecturer_detail?lecturer_id=961
-**51cto学院	    http://edu.51cto.com/lecturer/index/user_id-12016059.html
-**下载最新的ffmpeg版本 http://www.ffmpeg.club
-**
-**   ffmpeg+qt播放器 学员群 ：462249121 加入群下载代码和交流
-**   微信公众号  : jiedi2007
-**		头条号	 : 夏曹俊
-**
-*******************************************************************************/
-//！！！！！！！！！ 学员加群462249121下载代码和交流
-
-#include "XResample.h"
+#include "KSResample.h"
 extern "C" {
 #include "libswresample/swresample.h"
 #include "libavcodec/avcodec.h"
@@ -33,7 +7,7 @@ extern "C" {
 #include <iostream>
 using namespace std;
 
-void XResample::Close()
+void KSResample::Close()
 {
 	mux.lock();
 	if (actx)
@@ -43,7 +17,7 @@ void XResample::Close()
 }
 
 //输出参数和输入参数一致除了采样格式，输出为S16
-bool XResample::Open(AVCodecParameters *para,bool isClearPara)
+bool KSResample::Open(AVCodecParameters *para,bool isClearPara)
 {
 	if (!para)return false;
 	mux.lock();
@@ -77,7 +51,7 @@ bool XResample::Open(AVCodecParameters *para,bool isClearPara)
 }
 
 //返回重采样后大小,不管成功与否都释放indata空间
-int XResample::Resample(AVFrame *indata, unsigned char *d)
+int KSResample::Resample(AVFrame *indata, unsigned char *d)
 {
 	if (!indata) return 0;
 	if (!d)
@@ -97,11 +71,11 @@ int XResample::Resample(AVFrame *indata, unsigned char *d)
 	
 	return outSize;
 }
-XResample::XResample()
+KSResample::KSResample()
 {
 }
 
 
-XResample::~XResample()
+KSResample::~KSResample()
 {
 }

@@ -1,32 +1,4 @@
-/*******************************************************************************
-**                                                                            **
-**                     Jiedi(China nanjing)Ltd.                               **
-**	               创建：夏曹俊，此代码可用作为学习参考                       **
-*******************************************************************************/
-
-/*****************************FILE INFOMATION***********************************
-**
-** Project       : FFmpeg
-** Description   : FFMPEG项目创建示例
-** Contact       : xiacaojun@qq.com
-**        博客   : http://blog.csdn.net/jiedichina
-**		视频课程
-**网易云课堂	http://study.163.com/u/xiacaojun
-**腾讯课堂		https://jiedi.ke.qq.com/
-**csdn学院		http://edu.csdn.net/lecturer/lecturer_detail?lecturer_id=961
-**51cto学院	    http://edu.51cto.com/lecturer/index/user_id-12016059.html
-**下载最新的ffmpeg版本 http://www.ffmpeg.club
-**
-**   ffmpeg+qt播放器 学员群 ：462249121 加入群下载代码和交流
-**   微信公众号  : jiedi2007
-**		头条号	 : 夏曹俊
-**
-*******************************************************************************/
-//！！！！！！！！！ 学员加群462249121下载代码和交流
-
-
-
-#include "XDemux.h"
+#include "KSDemux.h"
 #include <iostream>
 using namespace std;
 extern "C" {
@@ -40,7 +12,7 @@ static double r2d(AVRational r)
 	return r.den == 0 ? 0 : (double)r.num / (double)r.den;
 }
 
-bool XDemux::Open(const char *url)
+bool KSDemux::Open(const char *url)
 {
 	Close();
 	//参数设置
@@ -116,7 +88,7 @@ bool XDemux::Open(const char *url)
 	return true;
 }
 //清空读取缓存
-void XDemux::Clear()
+void KSDemux::Clear()
 {
 	mux.lock();
 	if (!ic)
@@ -128,7 +100,7 @@ void XDemux::Clear()
 	avformat_flush(ic);
 	mux.unlock();
 }
-void XDemux::Close()
+void KSDemux::Close()
 {
 	mux.lock();
 	if (!ic)
@@ -143,7 +115,7 @@ void XDemux::Close()
 }
 
 //seek 位置 pos 0.0 ~1.0
-bool XDemux::Seek(double pos)
+bool KSDemux::Seek(double pos)
 {
 	mux.lock();
 	if (!ic)
@@ -162,7 +134,7 @@ bool XDemux::Seek(double pos)
 	return true;
 }
 //获取视频参数  返回的空间需要清理  avcodec_parameters_free
-AVCodecParameters *XDemux::CopyVPara()
+AVCodecParameters *KSDemux::CopyVPara()
 {
 	mux.lock();
 	if (!ic)
@@ -177,7 +149,7 @@ AVCodecParameters *XDemux::CopyVPara()
 }
 
 //获取音频参数  返回的空间需要清理 avcodec_parameters_free
-AVCodecParameters *XDemux::CopyAPara()
+AVCodecParameters *KSDemux::CopyAPara()
 {
 	mux.lock();
 	if (!ic)
@@ -190,7 +162,7 @@ AVCodecParameters *XDemux::CopyAPara()
 	mux.unlock();
 	return pa;
 }
-bool XDemux::IsAudio(AVPacket *pkt)
+bool KSDemux::IsAudio(AVPacket *pkt)
 {
 	if (!pkt) return false;
 	if (pkt->stream_index == videoStream)
@@ -198,7 +170,7 @@ bool XDemux::IsAudio(AVPacket *pkt)
 	return true;
 
 }
-AVPacket *XDemux::ReadVideo()
+AVPacket *KSDemux::ReadVideo()
 {
 	mux.lock();
 	if (!ic) //容错
@@ -223,7 +195,7 @@ AVPacket *XDemux::ReadVideo()
 	return pkt;
 }
 //空间需要调用者释放 ，释放AVPacket对象空间，和数据空间 av_packet_free
-AVPacket *XDemux::Read()
+AVPacket *KSDemux::Read()
 {
 	mux.lock();
 	if (!ic) //容错
@@ -248,7 +220,7 @@ AVPacket *XDemux::Read()
 	return pkt;
 
 }
-XDemux::XDemux()
+KSDemux::KSDemux()
 {
 	static bool isFirst = true;
 	static std::mutex dmux;
@@ -266,6 +238,6 @@ XDemux::XDemux()
 }
 
 
-XDemux::~XDemux()
+KSDemux::~KSDemux()
 {
 }
