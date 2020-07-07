@@ -59,6 +59,7 @@ void KSVideoPlay::Repaint(AVFrame *frame) {
                       NULL,
                       frame->data[0],
                       frame->linesize[0]);
+    av_frame_free(&frame);
     SDL_RenderClear(sdl_renderer);
     SDL_RenderCopy(sdl_renderer, sdl_texture, NULL, NULL);
     SDL_RenderPresent(sdl_renderer);
